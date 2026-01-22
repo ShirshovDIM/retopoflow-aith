@@ -236,7 +236,7 @@
         /* Polygon Counter */
         .polygon-counter {
             position: absolute;
-            bottom: 120px;
+            bottom: 180px;
             right: 100px;
             z-index: 10;
             text-align: right;
@@ -261,7 +261,7 @@
         /* ==================== MCP TERMINAL (Title Slide) ==================== */
         .mcp-terminal {
             position: absolute;
-            bottom: 120px;
+            bottom: 100px;
             right: 100px;
             width: 500px;
             max-width: calc(100% - 200px);
@@ -373,8 +373,9 @@
         .flow-diagram {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
             margin: 20px 0;
+            flex-wrap: wrap;
         }
 
         .flow-node {
@@ -452,20 +453,20 @@
         .split-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
             margin-top: 20px;
-            flex: 1;
-            min-height: 0;
+            align-items: stretch;
         }
 
         .split-panel {
             background: var(--secondary-bg);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 18px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            min-height: 0;
+            max-height: calc(100vh - 250px);
+            overflow-y: auto;
         }
 
         .split-panel-title {
@@ -473,12 +474,13 @@
             font-size: 18px;
             font-weight: 600;
             color: var(--accent-silver);
-            margin-bottom: 15px;
-            padding-bottom: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 14px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-shrink: 0;
         }
 
         .split-panel-title svg {
@@ -491,18 +493,19 @@
         .vertical-flow {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 12px;
+            margin-top: 12px;
         }
 
         .flow-step {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            padding: 15px;
+            gap: 14px;
+            padding: 14px;
             background: var(--tertiary-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
+            flex-shrink: 0;
         }
 
         .flow-step-number {
@@ -556,12 +559,14 @@
             font-family: var(--font-heading);
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            line-height: 1.3;
         }
 
         .flow-step-content p {
             font-size: 13px;
             color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         /* ==================== METRICS GRID ==================== */
@@ -1272,27 +1277,29 @@
 
         /* ==================== STORAGE LEVEL SECTION ==================== */
         .storage-level {
-            margin-top: 20px;
-            padding: 18px;
+            margin-top: 16px;
+            padding: 14px;
             background: rgba(196, 92, 62, 0.08);
             border: 1px solid rgba(196, 92, 62, 0.3);
-            border-radius: 12px;
+            border-radius: 10px;
+            flex-shrink: 0;
         }
 
         .storage-level h4 {
             font-family: var(--font-heading);
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--accent-crimson);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .storage-level p {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
+            line-height: 1.4;
         }
 
         /* ==================== ENHANCED MARKET PANELS ==================== */
@@ -1300,10 +1307,11 @@
             background: var(--secondary-bg);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent-coral);
-            border-radius: 12px;
-            padding: 18px;
+            border-radius: 10px;
+            padding: 14px;
             transition: all 0.3s ease;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            flex-shrink: 0;
         }
 
         .market-panel:hover {
@@ -1313,24 +1321,25 @@
 
         .market-panel h4 {
             font-family: var(--font-heading);
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--accent-coral);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .market-panel p {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
+            line-height: 1.3;
         }
 
         .market-value {
             font-family: var(--font-heading);
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--accent-silver);
             margin-bottom: 4px;
@@ -1388,7 +1397,7 @@
 
         .progress-dots {
             position: fixed;
-            bottom: 50px;
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -1467,32 +1476,220 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ==================== FLUID TYPOGRAPHY ==================== */
+        /* Use clamp() for smooth scaling across viewport sizes */
+        :root {
+            --fluid-title: clamp(32px, 5vw, 64px);
+            --fluid-h1: clamp(28px, 4.5vw, 56px);
+            --fluid-h2: clamp(20px, 3vw, 36px);
+            --fluid-h3: clamp(16px, 1.5vw, 20px);
+            --fluid-body: clamp(13px, 1vw, 16px);
+            --fluid-mono: clamp(11px, 0.9vw, 14px);
+        }
+
+        /* Apply fluid typography */
+        .title-main { font-size: var(--fluid-title); }
+        h1, .h1 { font-size: var(--fluid-h1); }
+        h2, .h2 { font-size: var(--fluid-h2); }
+        h3, .h3 { font-size: var(--fluid-h3); }
+        .slide { font-size: var(--fluid-body); }
+        .mcp-terminal, .terminal-content, .code-block { font-size: var(--fluid-mono); }
+
+        /* ==================== RESPONSIVE BASE ==================== */
+        /* Container-based scaling for predictable layouts */
+        .presentation-container {
+            container-type: size;
+            container-name: pres;
+        }
+
         /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
             * { animation: none !important; transition: none !important; }
         }
 
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 1200px) {
-            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-            .cards-grid { grid-template-columns: repeat(2, 1fr); }
-            .dual-terminal-container { grid-template-columns: 1fr; }
+        /* ==================== RESPONSIVE BREAKPOINTS ==================== */
+
+        /* Extra large screens (1600px+) - Center content with max width */
+        @media (min-width: 1600px) {
+            .slide {
+                padding-left: max(60px, calc((100vw - 1600px) / 2 + 60px));
+                padding-right: max(60px, calc((100vw - 1600px) / 2 + 60px));
+            }
+            .title-content { max-width: 1200px; }
         }
 
-        @media (max-width: 768px) {
-            .slide { padding: 30px 20px; }
-            .title-main { font-size: 36px; }
-            .h1 { font-size: 36px; }
-            .h2 { font-size: 28px; }
-            .metrics-grid { grid-template-columns: 1fr; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
+        /* Large desktops (1200px - 1599px) */
+        @media (max-width: 1599px) and (min-width: 1200px) {
+            .title-content { padding: 50px 60px; }
+            .mcp-terminal { width: 450px; right: 80px; }
+            .polygon-counter { right: 80px; }
+        }
+
+        /* Medium desktops/tablets landscape (900px - 1199px) */
+        @media (max-width: 1199px) and (min-width: 900px) {
+            .slide { padding: 35px 40px; }
+            .title-content { padding: 40px 50px; max-width: 700px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .knowledge-grid { grid-template-columns: repeat(2, 1fr); }
+            .milestones { grid-template-columns: repeat(2, 1fr); }
+            .dual-terminal-container { grid-template-columns: 1fr; }
+            .mcp-terminal { width: 400px; right: 40px; bottom: 90px; }
+            .polygon-counter { right: 40px; bottom: 160px; }
+            .status-timeline { padding: 0 20px; }
+            .flow-step { padding: 10px; }
+            .flow-step-number { width: 36px; height: 36px; font-size: 16px; }
+            .flow-step-content h4 { font-size: 13px; }
+            .flow-step-content p { font-size: 11px; }
+        }
+
+        /* Tablets portrait/small laptops (700px - 899px) */
+        @media (max-width: 899px) and (min-width: 700px) {
+            .slide { padding: 30px 35px; }
+            .title-content { padding: 35px 40px; max-width: 600px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .knowledge-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .split-layout { grid-template-columns: 1fr; }
-            .mcp-terminal { display: none; }
-            #three-canvas { width: 100%; opacity: 0.3; }
-            .title-content { padding: 30px 20px; }
+            .split-panel { max-height: none; }
+            .milestones { grid-template-columns: repeat(2, 1fr); }
             .laptop-frames { grid-template-columns: 1fr; }
             .dual-terminal-container { grid-template-columns: 1fr; }
+            .mcp-terminal { width: 350px; right: 30px; bottom: 80px; }
+            .polygon-counter { right: 30px; bottom: 140px; }
+            .polygon-count { font-size: 36px; }
+            .contact-section { flex-direction: column; gap: 30px; text-align: center; }
+            .status-timeline { flex-wrap: wrap; padding: 0 10px; }
+            .flow-step { padding: 10px; }
+            .flow-step-number { width: 34px; height: 34px; font-size: 15px; }
+            .flow-step-content h4 { font-size: 13px; }
+            .flow-step-content p { font-size: 11px; }
+            .market-panel { padding: 12px; }
+            .storage-level { padding: 12px; }
+        }
+
+        /* Small tablets/large phones (500px - 699px) */
+        @media (max-width: 699px) and (min-width: 500px) {
+            .slide { padding: 25px 25px; }
+            .title-content { padding: 30px 25px; max-width: 100%; }
+            .title-logo { gap: 15px; }
+            .logo-badge { width: 50px; height: 50px; }
+            .logo-badge svg { width: 26px; height: 26px; }
+            .logo-text { font-size: 18px; }
+            .title-subtitle { font-size: 16px; }
+            .title-tagline { font-size: 12px; padding: 10px 15px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .knowledge-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .split-layout { grid-template-columns: 1fr; gap: 20px; }
+            .split-panel { padding: 16px; max-height: none; }
+            .split-panel-title { font-size: 16px; margin-bottom: 12px; }
+            .milestones { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .flow-step { padding: 10px; gap: 10px; }
+            .flow-step-number { width: 32px; height: 32px; font-size: 14px; }
+            .flow-step-content h4 { font-size: 12px; }
+            .flow-step-content p { font-size: 11px; }
+            .market-panel { padding: 12px; margin-bottom: 8px; }
+            .storage-level { padding: 12px; margin-top: 12px; }
+            .laptop-frames { grid-template-columns: 1fr; gap: 20px; }
+            .dual-terminal-container { grid-template-columns: 1fr; gap: 20px; }
+            .mcp-terminal { width: calc(100% - 50px); right: 25px; bottom: 70px; }
+            .polygon-counter { right: 25px; bottom: 150px; }
+            .polygon-count { font-size: 32px; }
+            .contact-section { flex-direction: column; gap: 25px; text-align: center; }
+            .qr-code { width: 150px; height: 150px; }
+            .status-timeline { flex-wrap: wrap; gap: 15px; padding: 0 5px; }
+            .flow-diagram { flex-wrap: wrap; justify-content: center; }
+            .nav-arrows { bottom: 25px; right: 25px; gap: 10px; }
+            .nav-arrow { width: 44px; height: 44px; }
+            .slide-counter { bottom: 25px; left: 25px; font-size: 14px; }
+            .progress-dots { bottom: 45px; gap: 8px; }
+        }
+
+        /* Mobile phones (< 500px) */
+        @media (max-width: 499px) {
+            .slide { padding: 20px 18px; }
+            .title-content { padding: 25px 18px; max-width: 100%; }
+            .title-logo { gap: 12px; margin-bottom: 20px; }
+            .logo-badge { width: 45px; height: 45px; }
+            .logo-badge svg { width: 22px; height: 22px; }
+            .logo-text { font-size: 16px; }
+            .title-subtitle { font-size: 14px; margin-bottom: 25px; }
+            .title-tagline { font-size: 11px; padding: 8px 12px; }
+            .metrics-grid { grid-template-columns: 1fr; gap: 12px; }
+            .cards-grid { grid-template-columns: 1fr; gap: 12px; }
+            .knowledge-grid { grid-template-columns: 1fr; gap: 10px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 12px; }
+            .split-layout { grid-template-columns: 1fr; gap: 15px; }
+            .split-panel { padding: 12px; }
+            .split-panel-title { font-size: 16px; }
+            .milestones { grid-template-columns: 1fr; gap: 12px; }
+            .laptop-frames { grid-template-columns: 1fr; gap: 15px; }
+            .dual-terminal-container { grid-template-columns: 1fr; gap: 15px; }
+            .terminal-content { font-size: 11px; min-height: 150px; max-height: 170px; }
+            .flow-diagram { flex-direction: column; align-items: stretch; }
+            .flow-arrow { transform: rotate(90deg); text-align: center; }
+            .flow-step { padding: 12px; }
+            .flow-step-number { width: 32px; height: 32px; font-size: 14px; }
+            .mcp-terminal { display: none; }
+            #three-canvas { opacity: 0.25; }
+            .polygon-counter { right: 18px; bottom: 90px; }
+            .polygon-count { font-size: 28px; }
+            .polygon-label { font-size: 10px; }
+            .contact-section { flex-direction: column; gap: 20px; text-align: center; }
+            .qr-code { width: 130px; height: 130px; }
+            .contact-name { font-size: 28px; }
+            .contact-role { font-size: 16px; }
+            .status-timeline { flex-wrap: wrap; gap: 10px; padding: 0; }
+            .status-timeline::before { display: none; }
+            .nav-arrows { bottom: 20px; right: 18px; gap: 8px; }
+            .nav-arrow { width: 40px; height: 40px; font-size: 18px; }
+            .slide-counter { bottom: 20px; left: 18px; font-size: 13px; }
+            .progress-dots { bottom: 40px; gap: 6px; }
+            .progress-dot { width: 8px; height: 8px; }
+            .bar-label { width: 100px; font-size: 11px; }
+            .code-block { font-size: 11px; padding: 12px; }
+            .comparison-table th, .comparison-table td { padding: 8px 10px; font-size: 12px; }
+        }
+
+        /* Extra small screens (< 380px) */
+        @media (max-width: 379px) {
+            .slide { padding: 15px 12px; }
+            .title-content { padding: 20px 12px; }
+            .card { padding: 15px; }
+            .card-icon { width: 40px; height: 40px; }
+            .metric-card { padding: 15px; }
+            .metric-value { font-size: 32px; }
+            .stat-box { padding: 15px; }
+            .stat-value { font-size: 32px; }
+            .contact-name { font-size: 24px; }
+            .qr-code { width: 120px; height: 120px; }
+        }
+
+        /* Ultra-wide aspect ratio (21:9+ displays) */
+        @media (min-aspect-ratio: 21/9) and (min-width: 1400px) {
+            .slide { padding: 40px 100px; }
+            .title-content { padding: 80px 120px; max-width: 1400px; }
+        }
+
+        /* Portrait orientation mobile */
+        @media (orientation: portrait) and (max-height: 700px) {
+            .nav-arrows { bottom: 15px; right: 15px; }
+            .slide-counter { bottom: 15px; left: 15px; }
+            .progress-dots { bottom: 35px; }
+        }
+
+        /* Landscape orientation mobile */
+        @media (orientation: landscape) and (max-height: 600px) {
+            .slide { padding: 15px 30px; }
+            .title-content { padding: 20px 40px; }
+            .mcp-terminal { bottom: 20px; }
+            .polygon-counter { bottom: 70px; }
+            .nav-arrows { bottom: 15px; }
+            .slide-counter { bottom: 15px; }
+            .progress-dots { bottom: 30px; }
         }
 
         /* ==================== SCROLLBAR ==================== */
@@ -1863,9 +2060,9 @@
         </div>
 
         <!-- ==================== SLIDE 4: SERVICE INTEGRATION (DUAL TERMINALS) ==================== -->
-        <div class="slide" id="slide-4">
+        <div class="slide" id="slide-4" style="justify-content: center;">
             <div class="slide-label">04 — Service Integration: RetopoFlow &lt;&gt; Heugen</div>
-            <div class="slide-main-content">
+            <div class="slide-main-content" style="justify-content: center;">
                 <h2>Service Integration: RetopoFlow &lt;&gt; Heugen</h2>
 
                 <!-- CENTERED INTEGRATION BLOCK -->
@@ -2160,9 +2357,9 @@
         </div>
 
         <!-- ==================== SLIDE 6: HEUGEN ==================== -->
-        <div class="slide" id="slide-6">
+        <div class="slide" id="slide-6" style="justify-content: center;">
             <div class="slide-label">06 — Heugen: Knowledge Generation System</div>
-            <div class="slide-main-content">
+            <div class="slide-main-content" style="justify-content: center;">
                 <h2>Heuristic Generation & Management</h2>
 
                 <!-- Stats Row -->
@@ -2407,11 +2604,11 @@
                         <div class="laptop-screen-demo">
                             <div class="laptop-display" id="heugen-laptop-screen">
                                 <img id="heugen-img-1" class="img-visible"
-                                     src="file:///C:/Users/dbezu/Downloads/2026-01-21_15-52-28.png"
+                                     src="https://drive.google.com/uc?export=view&id=18HIsOngpdgXqY4FgmQ6zpa2gPb_AKZVf"
                                      onerror="this.style.display='none'"
                                      alt="Heugen Dashboard 1">
                                 <img id="heugen-img-2" class="img-hidden"
-                                     src="file:///C:/Users/dbezu/Downloads/2026-01-21_15-53-05.png"
+                                     src="https://drive.google.com/uc?export=view&id=17_oc9f8FeMknWsu-0B2fRX1SPAeZmtcp"
                                      onerror="this.style.display='none'"
                                      alt="Heugen Dashboard 2">
                             </div>
@@ -2573,27 +2770,27 @@
                                 <div style="width: 95px; font-size: 11px; color: var(--text-secondary);">Heugen Query</div>
                                 <div style="flex: 1; background: var(--primary-bg); border-radius: 6px; height: 12px; position: relative;">
                                     <div style="background: var(--accent-peach); height: 100%; border-radius: 4px; width: 15%;"></div>
-                                    <span style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--text-secondary); font-weight: 500;">~50ms</span>
+                                    <span style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--text-secondary); font-weight: 500;">~5 sec</span>
                                 </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
                                 <div style="width: 95px; font-size: 11px; color: var(--text-secondary);">Coordination</div>
                                 <div style="flex: 1; background: var(--primary-bg); border-radius: 6px; height: 12px; position: relative;">
                                     <div style="background: var(--accent-crimson); height: 100%; border-radius: 4px; width: 25%;"></div>
-                                    <span style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--text-secondary); font-weight: 500;">~80ms</span>
+                                    <span style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--text-secondary); font-weight: 500;">~8 sec</span>
                                 </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
                                 <div style="width: 95px; font-size: 11px; color: var(--text-secondary);">Worker Exec</div>
                                 <div style="flex: 1; background: var(--primary-bg); border-radius: 6px; height: 12px; position: relative;">
                                     <div style="background: var(--accent-coral); height: 100%; border-radius: 4px; width: 60%;"></div>
-                                    <span style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--text-secondary); font-weight: 500;">~200ms</span>
+                                    <span style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--text-secondary); font-weight: 500;">~20 sec</span>
                                 </div>
                             </div>
                         </div>
                         <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; justify-content: center; gap: 6px;">
                             <span style="font-size: 12px; color: var(--text-secondary);">Total:</span>
-                            <span style="font-size: 16px; font-weight: 700; color: var(--accent-silver);">~330ms</span>
+                            <span style="font-size: 16px; font-weight: 700; color: var(--accent-silver);">~33 sec</span>
                             <span style="font-size: 12px; color: var(--text-secondary);"> per query</span>
                         </div>
                     </div>
@@ -2807,15 +3004,15 @@
                 <div class="contact-section">
                     <!-- QR Code -->
                     <div class="qr-code">
-                        <img src="file:///C:/Users/dbezu/Downloads/qr-code.png" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://shirshovdim.github.io/retopoflow.xyz/'" alt="QR Code">
+                        <img src="https://drive.google.com/uc?export=view&id=1XfFhL1i9VD8y_4h3dKb6IRKrh9tLlTUq" alt="QR Code">
                     </div>
 
                     <!-- Contact Info -->
                     <div class="contact-info">
-                        <h3 class="contact-name">Дмитрий Ширшов</h3>
+                        <h3 class="contact-name">Dmitry Shirshov</h3>
                         <p class="contact-role">CEO & CTO RetopoFlow-AI Ecosystem</p>
-                        <p class="contact-title">Инженер по автоматизации и интеграции ИИ</p>
-                        <p class="contact-company">Альфа-Банк</p>
+                        <p class="contact-title">AI Automation & Integration Engineer</p>
+                        <p class="contact-company">Alpha Bank</p>
 
                         <a href="https://shirshovdim.github.io/retopoflow.xyz/" class="contact-link" target="_blank">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2863,6 +3060,27 @@
     </div>
 
     <script>
+        // ==================== RESPONSIVE CSS VARIABLES ====================
+        // Update CSS custom properties based on viewport for fluid scaling
+        (function() {
+            function updateResponsiveVars() {
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+                const vmin = Math.min(vw, vh);
+                const vmax = Math.max(vw, vh);
+
+                // Set CSS variables for potential use in styles
+                document.documentElement.style.setProperty('--vw', `${vw}px`);
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+                document.documentElement.style.setProperty('--vmin', `${vmin}px`);
+                document.documentElement.style.setProperty('--vmax', `${vmax}px`);
+            }
+
+            updateResponsiveVars();
+            window.addEventListener('resize', updateResponsiveVars);
+            window.addEventListener('orientationchange', () => setTimeout(updateResponsiveVars, 100));
+        })();
+
         // ==================== STATE ====================
         let currentSlide = 0;
         const totalSlides = 11;
@@ -3114,13 +3332,17 @@
 
             animate();
 
-            window.addEventListener('resize', () => {
+            // Responsive Three.js canvas
+            function resizeCanvas() {
                 const width = canvas.offsetWidth;
                 const height = canvas.offsetHeight;
                 camera.aspect = width / height;
                 camera.updateProjectionMatrix();
                 renderer.setSize(width, height);
-            });
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 200));
         }
 
         // ==================== MCP TERMINAL (Title Slide) ====================
